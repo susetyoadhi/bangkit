@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <title>URMAJOR</title>
+    <style>
+        input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+}
+    </style>
+  </head>
+  <body style="margin: 5vw">
+    <h1>Survei Jurusan berdasarkan Peminatan</h1>
+    <h4>Rekomendasi pemilihan jurusan untuk siswa SMA/SMK" yang dilengkapi dengan teknologi AI. Aplikasi dapat menampilkan hasil rekomendasi jurusan yang sesuai untuk Anda berdasarkan isian survei. Kami berharap aplikasi ini dapat membantu Anda dalam memilih jurusan sesuai minat Anda agar tidak salah jurusan nantinya. Silakan isi survei ini. Terima kasih.</h4>
+
+    <form action="{{ url_for('predict') }}" method="post">
+      <label for="jurusan_sma">jurusan saat sma</label>
+      <input
+        type="text"
+        name="jurusan_sma"
+        placeholder="Harap diisi dengan huruf kapital"
+        required="required"
+      />
+      <br>
+      <label for="minat">Minat yang kamu miliki terkait bidang kuliah </label>
+      <input
+        type="text"
+        name="minat"
+        placeholder="minat"
+        required="required"
+      />
+      <br>
+      <label for="spare">Jika kamu memiliki waktu luang, apa yang ingin kamu lakukan </label>
+      <input
+        type="text"
+        name="spare"
+        placeholder="yang kamu lakukan ..."
+        required="required"
+      />
+      <br>
+      <label for="ability">Apa kemampuan yang kamu miliki dan kamu rasakan lebih menonjol dibandingkan orang lain </label>
+      <input
+        type="text"
+        name="ability"
+        placeholder="kemampuan mu ..."
+        required="required"
+      />
+      <br>
+      <label for="career">Apa yang ingin kamu lakukan sebagai bekal untuk berkarier ke depannya </label>
+      <input
+        type="text"
+        name="career"
+        placeholder="karir mu kedepannya ..."
+        required="required"
+      />
+
+      <button type="submit" class="btn btn-primary">Cek Jurusan yang cocok untuk mu</button>
+      <a class="btn btn-warning" href="/">Reset</a>
+    </form>
+    
+    {% if result %}
+    <section>
+      <div style="margin: auto;">
+        <h1> Jurusan Yang Cocok Untukmu</h1>
+        <h2> {{ result[0] }} </h2>
+      </div>
+     
+    </section>
+    {% endif %}
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
